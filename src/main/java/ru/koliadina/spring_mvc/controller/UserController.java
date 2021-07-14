@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import ru.koliadina.spring_mvc.model.User;
 import ru.koliadina.spring_mvc.service.UserService;
+import ru.koliadina.spring_mvc.service.UserServiceImpl;
 
 
 @Controller
@@ -41,7 +42,7 @@ public class UserController {
         return "redirect:/users";
     }
 
-    @PatchMapping(value = "/{id}")
+    @PutMapping(value = "/{id}")
     public String updateUser(@ModelAttribute("user") User user) {
         userService.updateUser(user);
         return "redirect:/users";

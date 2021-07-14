@@ -9,7 +9,7 @@ import javax.servlet.ServletException;
 /*
 класс автоматически считывается и работает как web.xml
  */
-public class AppIn extends AbstractAnnotationConfigDispatcherServletInitializer {
+public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
     @Override
     protected Class<?>[] getRootConfigClasses() {
         return new Class<?>[]{HibernateConfig.class};
@@ -29,13 +29,13 @@ public class AppIn extends AbstractAnnotationConfigDispatcherServletInitializer 
     добавление фильтра для работы с PATCH, DELETE запросами
      */
     @Override
-    public void onStartup(ServletContext aServletContext) throws ServletException {
-        super.onStartup(aServletContext);
-        registerHiddenFieldFilter(aServletContext);
+    public void onStartup(ServletContext context) throws ServletException {
+        super.onStartup(context);
+        registerHiddenFieldFilter(context);
     }
 
     private void registerHiddenFieldFilter(ServletContext aContext) {
         aContext.addFilter("hiddenHttpMethodFilter",
-                new HiddenHttpMethodFilter()).addMappingForUrlPatterns(null ,true, "/*");
+                new HiddenHttpMethodFilter()).addMappingForUrlPatterns(null, true, "/*");
     }
 }

@@ -8,10 +8,7 @@
   <body>
       <h2>Update user</h2>
       <br>
-        <form th:method="patch" th:action="@{/users/{id}(id=${user.getId()})}" th:object="${user}">
-            <label>ID</label>
-            <input type="number" th:name="id"/>
-            <br>
+        <form th:method="put" th:action="@{/users/{id}(id=${user.getId()})}" th:object="${user}">
             <label>Name</label>
             <input th:name="firstName"/>
             <br>

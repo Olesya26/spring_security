@@ -4,6 +4,7 @@ package ru.koliadina.spring_mvc.dao;
 import org.springframework.stereotype.Repository;
 import ru.koliadina.spring_mvc.model.User;
 
+import javax.annotation.PostConstruct;
 import javax.persistence.EntityManager;
 
 import javax.persistence.PersistenceContext;

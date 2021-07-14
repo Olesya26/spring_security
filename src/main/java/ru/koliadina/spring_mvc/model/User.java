@@ -1,17 +1,13 @@
 package ru.koliadina.spring_mvc.model;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
-@AllArgsConstructor
+@RequiredArgsConstructor
 @Entity
 @Table(name = "users")
 public class User {
@@ -20,13 +16,14 @@ public class User {
     private Long id;
 
     @Column(name = "name")
+    @NonNull
     private String firstName;
 
     @Column(name = "last_name")
+    @NonNull
     private String lastName;
 
     @Column(name = "email")
+    @NonNull
     private String email;
-
-
 }
