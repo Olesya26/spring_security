@@ -10,13 +10,13 @@
       <br>
         <form th:method="put" th:action="@{/users/{id}(id=${user.getId()})}" th:object="${user}">
             <label>Name</label>
-            <input th:name="firstName"/>
+            <input type="text" th:value="${user.getFirstName()}" th:name="firstName"/>
             <br>
             <label>Last name</label>
-            <input th:name="lastName"/>
+            <input type="text" th:value="${user.getLastName()}"th:name="lastName"/>
             <br>
             <label>Email</label>
-            <input th:name="email"/>
+            <input type="text" th:value="${user.getEmail()}"th:name="email"/>
             <br>
             <input type="submit" value="Edit"/>
         </form>
