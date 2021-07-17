@@ -1,6 +1,8 @@
 package ru.koliadina.spring_mvc.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.koliadina.spring_mvc.dao.UserDao;
@@ -40,6 +42,12 @@ public class UserServiceImpl implements UserService {
     @Transactional
     public void updateUser(User user) {
         userDao.updateUser(user);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public User getUserByLogin(String userLogin) {
+        return userDao.getUserByLogin(userLogin);
     }
 
     @Override

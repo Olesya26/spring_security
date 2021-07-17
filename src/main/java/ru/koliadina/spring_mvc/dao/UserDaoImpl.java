@@ -1,7 +1,11 @@
 package ru.koliadina.spring_mvc.dao;
 
 
+import antlr.BaseAST;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Repository;
+import ru.koliadina.spring_mvc.model.Role;
 import ru.koliadina.spring_mvc.model.User;
 
 import javax.annotation.PostConstruct;
@@ -42,5 +46,12 @@ public class UserDaoImpl implements UserDao {
     @Override
     public void updateUser(User user) {
         entityManager.merge(user);
+    }
+
+    @Override
+    public User getUserByLogin(String login) {
+        return entityManager.createQuery("select user from User user where user.userLogin =:userLogin", User.class)
+                .setParameter("userLogin", login)
+                .getSingleResult();
     }
 }
