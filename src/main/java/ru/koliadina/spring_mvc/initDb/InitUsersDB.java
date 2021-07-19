@@ -38,12 +38,12 @@ public class InitUsersDB {
                 roleUser.add(role);
             }
         }
-        User user1 = new User("USER", "$2y$12$ckq8vl6/nGRcBNdOmRSgF.ZH3Dt7/OqoJvJZEXcxcQR32MrN8GiCG",
+        User user1 = new User("USER", "$2y$12$ckq8vl6/nGRcBNdOmRSgF.ZH3Dt7/OqoJvJZEXcxcQR32MrN8GiCG", // пароль USER
                 "Andrey", "Gorbunov", "andrey@yandex.com");
         user1.setRoles(roleUser);
 
         Set<Role> roleAdmin = new HashSet<>(roleService.getAllRole());
-        User user2 = new User("ADMIN", "$2y$12$9gPYP/2rDjSAzo5BISb1tucVusJ50r/rDMnhnH0Y276kJ4RYkOJIC",
+        User user2 = new User("ADMIN", "$2y$12$9gPYP/2rDjSAzo5BISb1tucVusJ50r/rDMnhnH0Y276kJ4RYkOJIC", // пароль ADMIN
                 "Olga", "Gorbunova", "olga@mail.ru");
         user2.setRoles(roleAdmin);
 
