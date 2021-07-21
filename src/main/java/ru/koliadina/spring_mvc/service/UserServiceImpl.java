@@ -20,6 +20,11 @@ public class UserServiceImpl implements UserService {
         this.userDao = userDao;
     }
 
+    @Autowired
+    PasswordEncoder getPasswordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+
     @Override
     @Transactional(readOnly = true)
     public List<User> getAllUsers() {
@@ -29,6 +34,7 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional
     public void addUser(User user) {
+        user.setPasswordUser(getPasswordEncoder().encode(user.getPasswordUser()));
         userDao.addUser(user);
     }
 
@@ -41,6 +47,9 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional
     public void updateUser(User user) {
+        if (!user.getPasswordUser().equals(getUserById(user.getId()).getPasswordUser())) {
+            user.setPasswordUser(getPasswordEncoder().encode(user.getPasswordUser()));
+        }
         userDao.updateUser(user);
     }
 

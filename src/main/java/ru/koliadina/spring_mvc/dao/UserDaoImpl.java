@@ -1,18 +1,10 @@
 package ru.koliadina.spring_mvc.dao;
 
-
-import antlr.BaseAST;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Repository;
-import ru.koliadina.spring_mvc.model.Role;
 import ru.koliadina.spring_mvc.model.User;
 
-import javax.annotation.PostConstruct;
 import javax.persistence.EntityManager;
-
 import javax.persistence.PersistenceContext;
-
 import java.util.List;
 
 
@@ -21,7 +13,6 @@ public class UserDaoImpl implements UserDao {
 
     @PersistenceContext
     private EntityManager entityManager;
-
 
     @Override
     public List<User> getAllUsers() {
