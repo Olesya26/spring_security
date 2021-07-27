@@ -44,7 +44,7 @@ public class User implements UserDetails {
     private String email;
 
 
-    @ManyToMany(cascade=CascadeType.MERGE, fetch = FetchType.EAGER)
+    @ManyToMany(cascade=CascadeType.MERGE, fetch = FetchType.LAZY)
     @JoinTable(name = "user_roles",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
@@ -90,7 +90,9 @@ public class User implements UserDetails {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return Objects.equals(id, user.id) && userLogin.equals(user.userLogin) && passwordUser.equals(user.passwordUser) && firstName.equals(user.firstName) && lastName.equals(user.lastName) && email.equals(user.email) && Objects.equals(roles, user.roles);
+        return Objects.equals(id, user.id) && userLogin.equals(user.userLogin) && passwordUser.equals(user.passwordUser)
+                && firstName.equals(user.firstName) && lastName.equals(user.lastName) && email.equals(user.email)
+                && Objects.equals(roles, user.roles);
     }
 
     @Override
